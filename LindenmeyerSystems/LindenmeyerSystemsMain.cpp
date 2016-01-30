@@ -14,6 +14,9 @@ LindenmeyerSystemsMain::LindenmeyerSystemsMain(const std::shared_ptr<DX::DeviceR
 	// Register to be notified if the Device is lost or recreated
 	m_deviceResources->RegisterDeviceNotify(this);
 
+	// Create the LSystemStringBuilder object
+	CreateLSystemContent();
+
 	// TODO: Replace this with your app's content initialization.
 	m_sceneRenderer = std::unique_ptr<Sample3DSceneRenderer>(new Sample3DSceneRenderer(m_deviceResources));
 
@@ -97,4 +100,19 @@ void LindenmeyerSystemsMain::OnDeviceRestored()
 	m_sceneRenderer->CreateDeviceDependentResources();
 	m_fpsTextRenderer->CreateDeviceDependentResources();
 	CreateWindowSizeDependentResources();
+}
+
+void LindenmeyerSystemsMain::CreateLSystemContent()
+{
+	// Create a new L-System object.
+	m_testLSystem = std::shared_ptr<LSystemObject>(new LSystemObject());
+
+	m_testLSystem->AddRuleMapping('e', "E");
+	m_testLSystem->AddRuleMapping('l', "L");
+	m_testLSystem->AddRuleMapping('d', "d of doom!!");
+
+	std::string output = m_testLSystem->ApplyRules("Hello World");
+
+	// Assign it an axiom and rule mapping.
+	// Set the L-System to a particular iteration/generation
 }
