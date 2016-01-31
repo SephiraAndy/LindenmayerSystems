@@ -36,7 +36,6 @@ std::string LindenmeyerSystems::LSystemObject::ApplyRules(std::string instructio
 		else
 		{
 			char charAsCharString[2] = { ruleFrom, '\0' };
-			std::string charAsString(charAsCharString);
 			nextGeneration.append(charAsCharString);
 		}
 	}
@@ -46,5 +45,22 @@ std::string LindenmeyerSystems::LSystemObject::ApplyRules(std::string instructio
 
 std::string LindenmeyerSystems::LSystemObject::ComputeGeneration(unsigned int generation)
 {
-	return "";
+	std::string resultString = m_axiom;
+
+	for (unsigned int i = 0; i < generation; ++i)
+	{
+		resultString = ApplyRules(resultString);
+	}
+
+	return resultString;
+}
+
+void LindenmeyerSystems::LSystemObject::CacheInstructions(std::string instructions)
+{
+	m_instructions = instructions;
+}
+
+std::string LindenmeyerSystems::LSystemObject::GetCachedInstructions() const
+{
+	return m_instructions;
 }

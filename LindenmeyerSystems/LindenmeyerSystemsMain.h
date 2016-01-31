@@ -5,6 +5,7 @@
 #include "Content\Sample3DSceneRenderer.h"
 #include "Content\SampleFpsTextRenderer.h"
 #include "Content\LSystemObject.h"
+#include "Content\LSystemInterpreter.h"
 
 // Renders Direct2D and 3D content on the screen.
 namespace LindenmeyerSystems
@@ -35,6 +36,7 @@ namespace LindenmeyerSystems
 
 		// LSystem specific content
 		std::shared_ptr<LSystemObject> m_testLSystem;
+		std::shared_ptr<LSystemInterpreter> m_testInterpreter;
 
 		// Rendering loop timer.
 		DX::StepTimer m_timer;

@@ -107,12 +107,27 @@ void LindenmeyerSystemsMain::CreateLSystemContent()
 	// Create a new L-System object.
 	m_testLSystem = std::shared_ptr<LSystemObject>(new LSystemObject());
 
-	m_testLSystem->AddRuleMapping('e', "E");
-	m_testLSystem->AddRuleMapping('l', "L");
-	m_testLSystem->AddRuleMapping('d', "d of doom!!");
-
-	std::string output = m_testLSystem->ApplyRules("Hello World");
-
 	// Assign it an axiom and rule mapping.
+	m_testLSystem->SetAxiom("X");
+	m_testLSystem->AddRuleMapping('X', "F-[[X]+X]+F[+FX]-X");
+	m_testLSystem->AddRuleMapping('F', "FF");
+	
 	// Set the L-System to a particular iteration/generation
+	m_testLSystem->CacheInstructions(m_testLSystem->ComputeGeneration(3));
+
+	// Set up how the characters are interpreted in a more human readable form.
+	m_testInterpreter = std::shared_ptr<LSystemInterpreter>(new LSystemInterpreter());
+
+	m_testInterpreter->AddInstructionMapping('F', Instruction::DrawForward);
+	m_testInterpreter->AddInstructionMapping('-', Instruction::LeanLeft);
+	m_testInterpreter->AddInstructionMapping('+', Instruction::LeanRight);
+	m_testInterpreter->AddInstructionMapping('X', Instruction::DoNothing);
+	m_testInterpreter->AddInstructionMapping('[', Instruction::OpenBranch);
+	m_testInterpreter->AddInstructionMapping(']', Instruction::CloseBranch);
+
+	// Unused in the current test but will be used later.
+	m_testInterpreter->AddInstructionMapping('^', Instruction::BendForward);
+	m_testInterpreter->AddInstructionMapping('v', Instruction::BendBack);
+
+	// TODO: Generate geometry based on the LSystem described above.
 }

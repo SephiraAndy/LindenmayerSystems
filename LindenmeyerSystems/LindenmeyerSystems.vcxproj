@@ -200,6 +200,7 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="Common\DeviceResources.h" />
+    <ClInclude Include="Content\LSystemInterpreter.h" />
     <ClInclude Include="Content\LSystemObject.h" />
     <ClInclude Include="LindenmeyerSystemsMain.h" />
     <ClInclude Include="Common\DirectXHelper.h" />
@@ -212,6 +213,7 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Common\DeviceResources.cpp" />
+    <ClCompile Include="Content\LSystemInterpreter.cpp" />
     <ClCompile Include="Content\LSystemObject.cpp" />
     <ClCompile Include="LindenmeyerSystemsMain.cpp" />
     <ClCompile Include="Content\SampleFpsTextRenderer.cpp" />

@@ -11,7 +11,7 @@ using namespace Windows::Foundation;
 // Loads vertex and pixel shaders from files and instantiates the cube geometry.
 Sample3DSceneRenderer::Sample3DSceneRenderer(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
 	m_loadingComplete(false),
-	m_degreesPerSecond(45),
+	m_degreesPerSecond(15),
 	m_indexCount(0),
 	m_tracking(false),
 	m_deviceResources(deviceResources)
